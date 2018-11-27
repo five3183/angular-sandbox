@@ -1,17 +1,17 @@
 <button (click)="showUserForm =!showUserForm" class="btn btn-dark mb-3">Add User</button>
 <div class="card card-body mb-3" *ngIf="showUserForm">
 
-  <head>Add User</head>
-  <form #userForm="ngForm"(ngSubmit)="onSubmit(userForm)">
+  <h3 class="mb-3">Add User</h3>
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
     <div class="form-group">
       <input 
-        type="text" 
-        [(ngModel)]="user.firstName"
-        [ngClass]="{'is-invalid': userFirstName.errors && userFirstName.touched}" 
+        type="text"
         name="firstName" 
         class="form-control" 
         placeholder="First Name"
+        [(ngModel)]="user.firstName"
         #userFirstName="ngModel"
+        [ngClass]="{'is-invalid': userFirstName.errors && userFirstName.touched}" 
         required 
         minlength="2"
       >
@@ -22,35 +22,35 @@
     </div>
     <div class="form-group">
       <input 
-      type="text" 
-      [(ngModel)]="user.lastName"
-      [ngClass]="{'is-invalid': userLastName.errors && userLastName.touched}" 
-      name="lastName" 
-      class="form-control" 
-      placeholder="Last Name"
-      #userLastName="ngModel"
-      required 
-      minlength="2"
-    >
-
-    <div [hidden]="!userLastName.errors?.required"class="invalid-feedback">Last name is required!</div>
+        type="text"
+        name="lastName" 
+        class="form-control" 
+        placeholder="Last Name" 
+        [(ngModel)]="user.lastName"
+        #userLastName="ngModel"
+        [ngClass]="{'is-invalid': userLastName.errors && userLastName.touched}" 
+        required 
+        minlength="2"
+      >
+      <!-- required and minlength are rules.  If their conditons are not met they added to user****.errors.  This is to disable the submit button. -->
+    <div [hidden]="!userLastName.errors?.required" class="invalid-feedback">Last name is required!</div>
     <div [hidden]="!userLastName.errors?.minlength" class="invalid-feedback">Must be at least 2 characters</div>
     </div>
     <div class="form-group">
       <input 
-      type="email" 
-      [(ngModel)]="user.email"
-      [ngClass]="{'is-invalid': userEmail.errors && userEmail.touched}" 
-      name="email" 
-      class="form-control" 
-      placeholder="Email Address"
-      #userEmail="ngModel"
-      required 
-      pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
-    >
+        type="email"
+        name="email" 
+        class="form-control" 
+        placeholder="Email Address"
+        [(ngModel)]="user.email"
+        #userEmail="ngModel"
+        [ngClass]="{'is-invalid': userEmail.errors && userEmail.touched}" 
+        required 
+        pattern="[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?"
+      >
+    <div [hidden]="!userEmail.errors?.required" class="invalid-feedback">Email address is required!</div>
 
-    <div [hidden]="!userEmail.errors?.pattern"class="invalid-feedback">Enter a valid email address</div>
-    <!-- <div [hidden]="!userEmail.errors?.minlength" class="invalid-feedback">Must be at least 2 characters</div> -->
+    <div [hidden]="!userEmail.errors?.pattern" class="invalid-feedback">Enter a valid email address</div>
     </div>
     <button [disabled]="!userForm.form.valid" class="btn btn-block mb-3">Add
       New User</button>
