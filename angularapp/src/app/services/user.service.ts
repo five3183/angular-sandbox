@@ -55,14 +55,14 @@ export class UserService {
       setTimeout(() => {
         observer.next(4)
       }, 4000);
-  })
+    })
 
-  return this.data
-}
-getUsers(): Observable<User[]> {
-  return of(this.users)
-}
-addUser(user: User) {
-  this.users.unshift(user)
-}
+    return this.data
+  }
+  getUsers(): Observable<User[]> {
+    return of(this.users)
+  }
+  addUser(user: User) {
+    this.users.unshift(user)
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../services/user.service'
 import { User } from '../../models/User'
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -17,8 +18,9 @@ export class UsersComponent implements OnInit {
   loaded: boolean = false
   enableAdd: boolean = false
   showUserForm: boolean = false
-  @ViewChild('userForm')form: any
+  @ViewChild('userForm') form: any
   data: any
+  
   constructor(private _userService: UserService) { }
 
   ngOnInit() {
