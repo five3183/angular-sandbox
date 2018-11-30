@@ -33,8 +33,8 @@ export class PostsComponent implements OnInit {
     this.isEdit = true
   }
   onUpdatedPost(post: Post) {
-    this.posts.forEach((item, index) => {
-      if(item.id === post.id) {
+    this.posts.forEach((current, index) => {
+      if(current.id === post.id) {
         this.posts.splice(index, 1)
         this.posts.unshift(post)    
         this.isEdit = false
@@ -49,8 +49,8 @@ export class PostsComponent implements OnInit {
   removePost(post: Post) {
     if(confirm('Are you sure?')) {
       this._postService.removePost(post.id).subscribe(() => {
-        this.posts.forEach((item, index) => {
-          if(item.id === post.id) {
+        this.posts.forEach((current, index) => {
+          if(current.id === post.id) {
             this.posts.splice(index, 1)
             this.currentPost = {
               id: 0,

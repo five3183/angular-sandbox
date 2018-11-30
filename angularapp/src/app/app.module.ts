@@ -12,6 +12,10 @@ import { PostsComponent } from './components/posts/posts.component'
 import { UserService } from './services/user.service';
 import { PostService } from './services/posts.service';
 import { PostFormComponent } from './components/post-form/post-form.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './components/home/home.component';
+import { PostComponent } from './components/post/post.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 @NgModule({
@@ -21,12 +25,16 @@ import { PostFormComponent } from './components/post-form/post-form.component';
     UsersComponent,
     NavbarComponent,
     PostsComponent,
-    PostFormComponent
+    PostFormComponent,
+    HomeComponent,
+    PostComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [
     UserService,
